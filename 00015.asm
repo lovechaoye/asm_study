@@ -6,47 +6,15 @@ include io32.inc
 	dvar dword 67762000h,12345678h
 .code
 start:
-	mov eax,offset line
-	call dispmsg
-	call disprd
-	
 	mov edx,dvar+4
-	
-	call dispmsg
-	call disprd
-	
 	push edx
-	
-	call dispmsg
-	call disprd
-	
-	
-	push dword ptr ten
-	
-	call dispmsg
-	call disprd
-	
+	push dword ptr ten ;在pop  push中立即数还是要指明操作数的类型,因为pop和push支持字或者双字的单位,虽然也可以不指明,但是显然为了避免被错误使用还是指明的好 
 	push dvar
-	
-	call dispmsg
-	call disprd
-	
 	pop edx
 	mov ebx,dvar+4
-	call dispmsg
-	call disprd
-	
 	pop dvar+4
-	
-	call dispmsg
-	call disprd
-
 	mov ebx,dvar+4
 	pop ecx
-	call dispmsg
-	call disprd
-
-
-exit 0
-
+	pop ecx
+	exit 0
 end start
